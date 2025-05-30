@@ -176,7 +176,7 @@
     }
   }
 </style>
-
+<!--
 <main class="main">
   <div class="content">
     <div class="left-side">
@@ -323,7 +323,7 @@
     </div>
   </div>
 </main>
-
+-->
 <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
 <!-- * * * * * * * * * * * The content above * * * * * * * * * * * * -->
 <!-- * * * * * * * * * * is only a placeholder * * * * * * * * * * * -->
@@ -333,4 +333,11 @@
 <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
 
 
-<router-outlet />
+<nav>
+  <a routerLink="/">Home</a>
+  <a routerLink="/about">About</a>
+  <a routerLink="/contact">Contact (Lazy)</a>
+  <a routerLink="/dashboard">Dashboard (Lazy Route)</a>
+  <a routerLink="/form">Form</a>
+</nav>
+<router-outlet></router-outlet>
