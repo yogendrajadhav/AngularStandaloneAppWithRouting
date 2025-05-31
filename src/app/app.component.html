@@ -339,5 +339,9 @@
   <a routerLink="/contact">Contact (Lazy)</a>
   <a routerLink="/dashboard">Dashboard (Lazy Route)</a>
   <a routerLink="/form">Form</a>
+  <a routerLink="/admin">Admin</a>
+  <a routerLink="/profile/2">Profile</a>
 </nav>
+<!-- <div *ngIf="loading$ | async" class="spinner">loading..</div> -->
+<div *ngIf="loading$ | async" class="spinner"></div>
 <router-outlet></router-outlet>

@@ -1,0 +1,35 @@
+nav>a{
+    color: blue;
+    text-decoration: none;
+    font-weight: bold;
+    margin-right: 10px;
+    
+}
+.spinner{
+    color: red;
+    font-weight: bold;
+}
+.spinner::before {
+    content: 'Loading...';
+    display: inline-block;
+    animation: spin 1s linear infinite;
+}
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+/* This CSS styles a spinner that indicates loading status.
+   The spinner is red, bold, and has a spinning animation. */   
+.spinner::after {
+    content: ' Please wait';
+    display: inline-block;
+}
+/* This CSS adds a message after the spinner indicating to the user to wait. */
+/* This CSS styles a spinner that indicates loading status.
+   The spinner is red, bold, and has a spinning animation. */   
+.spinner {
+    display: inline-block;
+    margin: 0 auto;
+    text-align: center;
+}   
+/* This CSS centers the spinner in its container. */
