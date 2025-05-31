@@ -6,6 +6,7 @@ import { ProfileComponent } from './pages/profile/profile.component';
 import { userResolver } from './resolvers/user.resolver';
 import { FormpageComponent } from './pages/formpage/formpage.component';
 import { leaveFormGuard } from './guards/leave-form.guard';
+import { roleGuard } from './guards/role.guard';
 
 export const routes: Routes = [
     { path: '', component: HomeComponent },
@@ -43,6 +44,15 @@ export const routes: Routes = [
         path: 'form',
         component: FormpageComponent,
         canDeactivate: [leaveFormGuard]
+    },
+    {
+        path:'admin',loadComponent:()=>import('./pages/admin/admin.component')
+        .then(m=>m.AdminComponent),
+        canActivate: [
+            //() => import('./guards/role.guard').then(m => m.roleGuard)
+            roleGuard
+        ],
+        data: { roles: ['admin'] }
     }
 
 ];
