@@ -36,7 +36,7 @@ steps:
   inputs:
     azureSubscription: '$(azureSubscription)'
     appName: '$(appName)'
-    appType: '$(appType)'
+    appType: 'webApp'
     package: '$(Build.ArtifactStagingDirectory)/angular-standalone-app-with-routing/artifact'
 #    package: '$(Build.ArtifactStagingDirectory)/**/angular.zip'
 #   package: '$(Build.ArtifactStagingDirectory)/angular.zip'
