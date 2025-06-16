@@ -29,7 +29,7 @@ steps:
 - task: PublishBuildArtifacts@1
   inputs:
     PathtoPublish: 'dist/angular-standalone-app-with-routing/browser'
-    ArtifactName: 'artifact'
+    ArtifactName: 'angular-build'
     publishLocation: 'Container'
   displayName: 'Publish build artifact'
 - task: AzureWebApp@1
@@ -37,7 +37,7 @@ steps:
     azureSubscription: '$(azureSubscription)'
     appName: '$(appName)'
     appType: 'webApp'
-    package: '$(Build.ArtifactStagingDirectory)/yogendrajadhav.AngularStandaloneAppWithRouting/artifact'
+    package: '$(Pipeline.Workspace)/yogendrajadhav.AngularStandaloneAppWithRouting/angular-build/'
 #    package: '$(Build.ArtifactStagingDirectory)/**/angular.zip'
 #   package: '$(Build.ArtifactStagingDirectory)/angular.zip'
   displayName: 'Deploy to Azure Web App'  
