@@ -23,7 +23,7 @@ steps:
 - script: |
     npm install -g @angular/cli
     npm install
-    ng build --configuration ${{ variables.buildConfiguration }} --base-href "/"
+    ng build --configuration ${{ variables.buildConfiguration }} --base-href "./"
   displayName: 'Install dependencies and build Angular app'
 - task: ArchiveFiles@2
   inputs:
