@@ -45,6 +45,7 @@ steps:
     azureSubscription: '$(azureSubscription)'
     appName: '$(appName)'
     appType: '$(appType)'
-    package: '$(Build.ArtifactStagingDirectory)/angular.zip'
+    package: '$(Build.ArtifactStagingDirectory)/**/angular.zip'
+#   package: '$(Build.ArtifactStagingDirectory)/angular.zip'
   displayName: 'Deploy to Azure Web App'  
 
