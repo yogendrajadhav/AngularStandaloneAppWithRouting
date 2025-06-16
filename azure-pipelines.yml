@@ -12,7 +12,7 @@ pool:
 variables:
   buildConfiguration: 'production'
   appName: 'MyAngularApp1'    # Change to your Azure Web App name
-  azureSubscription: 'Azure subscription 1'
+  azureSubscription: 'Service_Connection_Automatic'
   appType: 'webApp'
 steps:
 - task: NodeTool@0
@@ -23,25 +23,26 @@ steps:
 - script: |
     npm install -g @angular/cli
     npm install
-    ng build --configuration ${{ variables.buildConfiguration }}
+    ng build --configuration ${{ variables.buildConfiguration }} --base-href "/"
   displayName: 'Install dependencies and build Angular app'
 - task: ArchiveFiles@2
   inputs:
-    rootFolderOrFile: 'dist'
+    rootFolderOrFile: 'dist/angular-standalone-app-with-routing/browser'
     includeRootFolder: false
     archiveType: 'zip'
     archiveFile: '$(Build.ArtifactStagingDirectory)/angular.zip'
+    
     replaceExistingArchive: true
   displayName: 'Archive Angular build'
 - task: PublishBuildArtifacts@1
   inputs:
     PathtoPublish: '$(Build.ArtifactStagingDirectory)/angular.zip'
-    ArtifactName: 'drop'
+    ArtifactName: 'artifact'
     publishLocation: 'Container'
   displayName: 'Publish artifact'
 - task: AzureWebApp@1
   inputs:
-    azureSubscription: 'Service_Connection_Automatic'
+    azureSubscription: '$(azureSubscription)'
     appName: '$(appName)'
     appType: '$(appType)'
     package: '$(Build.ArtifactStagingDirectory)/angular.zip'
