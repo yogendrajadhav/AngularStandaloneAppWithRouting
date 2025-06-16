@@ -37,8 +37,9 @@ steps:
     azureSubscription: '$(azureSubscription)'
     appName: '$(appName)'
     appType: 'webApp'
-    package: '$(Pipeline.Workspace)/yogendrajadhav.AngularStandaloneAppWithRouting/angular-build/'
+#   package: '$(Pipeline.Workspace)/yogendrajadhav.AngularStandaloneAppWithRouting/angular-build/'
 #    package: '$(Build.ArtifactStagingDirectory)/**/angular.zip'
 #   package: '$(Build.ArtifactStagingDirectory)/angular.zip'
+    package: '$(Build.ArtifactStagingDirectory)/**/*.zip'
   displayName: 'Deploy to Azure Web App'  
 
