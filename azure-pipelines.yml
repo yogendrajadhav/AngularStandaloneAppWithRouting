@@ -23,29 +23,21 @@ steps:
 - script: |
     npm install -g @angular/cli
     npm install
-    ng build --configuration ${{ variables.buildConfiguration }} --base-href "./"
+    ng build --configuration ${{ variables.buildConfiguration }} --base-href "./" --output-hashing=all
   displayName: 'Install dependencies and build Angular app'
-- task: ArchiveFiles@2
-  inputs:
-    rootFolderOrFile: 'dist/angular-standalone-app-with-routing/browser'
-    includeRootFolder: false
-    archiveType: 'zip'
-    archiveFile: '$(Build.ArtifactStagingDirectory)/angular.zip'
-    
-    replaceExistingArchive: true
-  displayName: 'Archive Angular build'
+
 - task: PublishBuildArtifacts@1
   inputs:
-    PathtoPublish: '$(Build.ArtifactStagingDirectory)/angular.zip'
+    PathtoPublish: 'dist/angular-standalone-app-with-routing/browser'
     ArtifactName: 'artifact'
     publishLocation: 'Container'
-  displayName: 'Publish artifact'
+  displayName: 'Publish build artifact'
 - task: AzureWebApp@1
   inputs:
     azureSubscription: '$(azureSubscription)'
     appName: '$(appName)'
     appType: '$(appType)'
-    package: '$(Build.ArtifactStagingDirectory)/**/*.zip'
+    package: '$(Build.ArtifactStagingDirectory)/artifact'
 #    package: '$(Build.ArtifactStagingDirectory)/**/angular.zip'
 #   package: '$(Build.ArtifactStagingDirectory)/angular.zip'
   displayName: 'Deploy to Azure Web App'  
