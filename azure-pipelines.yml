@@ -41,7 +41,7 @@ steps:
   displayName: 'Publish artifact'
 - task: AzureWebApp@1
   inputs:
-    azureSubscription: '$(azureSubscription)'
+    azureSubscription: 'Service_Connection_Automatic'
     appName: '$(appName)'
     appType: '$(appType)'
     package: '$(Pipeline.Workspace)/drop/angular.zip'
