@@ -23,7 +23,7 @@ steps:
 - script: |
     npm install -g @angular/cli
     npm install
-    ng build --configuration ${{ variables.buildConfiguration }} --base-href "/" --output-hashing=all
+    ng build --configuration ${{ variables.buildConfiguration }} --output-hashing=all
   displayName: 'Install dependencies and build Angular app'
 
 - task: PublishBuildArtifacts@1
