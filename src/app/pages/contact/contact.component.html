@@ -1,1 +1,21 @@
 <p>contact works!</p>
+
+@for (item of contactSignal(); track item.id) {
+  <div>{{ item.name }}</div>
+}
+
+<div *ngFor="let contact of contactSignal()">
+   
+    <div>
+        Name: {{ contact.name }}
+    </div>
+   
+    <div>
+        Email: {{ contact.email }}
+    </div>
+    
+    <div>
+        Phone: {{ contact.phone }}
+    </div>
+
+</div>
