@@ -8,15 +8,19 @@ import { email, Field, form, max, min, minLength, required, schema } from '@angu
   styleUrl: './subscribe-form.component.css'
 })
 export class SubscribeFormComponent {
-Submit() {
-throw new Error('Method not implemented.');
-}
 
   subscribeModel=signal<SubscriptionData>(initialData);
   subscribeForm=form(this.subscribeModel,subscriptionSchema);
   eff=effect(()=>{
     console.log(`Email: ${this.subscribeModel().email}`);
   });
+
+  Submit() {
+  console.log(this.subscribeModel().firstName);
+  console.log(this.subscribeModel().lastName);
+  console.log(this.subscribeModel().email);
+  console.log(this.subscribeModel().yearsAsFan);
+}
 
 }
 
