@@ -7,10 +7,12 @@ import { userResolver } from './resolvers/user.resolver';
 import { FormpageComponent } from './pages/formpage/formpage.component';
 import { leaveFormGuard } from './guards/leave-form.guard';
 import { roleGuard } from './guards/role.guard';
+import { SubscribeFormComponent } from './pages/subscribe-form/subscribe-form.component';
 
 export const routes: Routes = [
     { path: '', component: HomeComponent },
     { path: 'about', component: AboutComponent },
+    {path:'subscribe', component:SubscribeFormComponent},
     // {path:'**',redirectTo:''},
     {
         path: 'contact', loadComponent: () => import('./pages/contact/contact.component')
