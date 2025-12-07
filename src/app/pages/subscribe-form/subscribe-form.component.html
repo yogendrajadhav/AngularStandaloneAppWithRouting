@@ -1,6 +1,6 @@
 <p>subscribe-form works!</p>
 <div class="card">
-    <div class="card-header">Subscribe to our News letters</div>
+    <div class="card-header">Subscribe to our NewsLetters</div>
     <div class="card-body">
         <form (ngSubmit)="Submit()">
             <div class="row">
@@ -15,20 +15,45 @@
                     <input type="text" [field]="subscribeForm.lastName" class="form-control" id="lastNameId" placeholder="Last Name (optional)">
                 </div>
             </div>
+
             <div class="row">
                 <label class="row-label" for="EmailId">Email <span class="text-danger">*</span></label>
                 <div class="row-value">
                     <input type="email" [field]="subscribeForm.email" class="form-control" id="emailId" placeholder="Email">
                 </div>
+
+                @if(subscribeForm.email().invalid() && subscribeForm.email().touched())
+                {
+                    <div class="alert alert-danger">
+                        @for (error of subscribeForm.email().errors(); track error.kind) 
+                        {
+                            <div>{{error.message}}</div>
+                        }
+                    </div>
+                }
+
             </div>
+
             <div class="row">
                 <label class="row-label" for="YearsAsFanId">Years As Fan</label>
                 <div class="row-value">
                     <input type="number" [field]="subscribeForm.yearsAsFan" class="form-control" id="yearsAsFanId" placeholder="How many years you have been fan of Star Wars? (optional)">
                 </div>
+                
+                @if(subscribeForm.yearsAsFan().invalid() && subscribeForm.yearsAsFan().touched())
+                {
+                    <div class="alert alert-danger">
+                        @for (error of subscribeForm.yearsAsFan().errors(); track error.kind) 
+                        {
+                            <div>{{error.message}}</div>
+                        }
+                    </div>
+                }
+
             </div>
+
             <div class="row">
-                <button type="submit" title="Ensure form is valid and required fields are entered before subscribing." class="btn btn-primary">Subscribe</button>
+                <button type="submit" [disabled]="subscribeForm().invalid()" class="btn btn-primary">Subscribe</button>
                 <button type="button" class="btn btn-secondary">Cancel</button>
             </div>
         </form>
