@@ -1,5 +1,5 @@
 import { Component, effect, signal } from '@angular/core';
-import { Field, form, required, schema } from '@angular/forms/signals';
+import { email, Field, form, required, schema } from '@angular/forms/signals';
 import { max } from 'rxjs';
 @Component({
   selector: 'app-subscribe-form',
@@ -37,6 +37,7 @@ export const initialData: SubscriptionData = {
 
 export const SubscriptionSchema=schema<SubscriptionData>((rootPath)=>{
    required(rootPath.email,{message:'Email Address is required'});
+   email(rootPath.email,{message:'Enter a valid email address'});
 });
  
 
